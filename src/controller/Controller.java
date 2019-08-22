@@ -2,6 +2,7 @@ package controller;
 
 import java.util.Scanner;
 
+import model.data_structures.Viaje;
 import model.logic.MVCModelo;
 import view.MVCView;
 
@@ -9,6 +10,8 @@ public class Controller {
 
 	/* Instancia del Modelo*/
 	private MVCModelo modelo;
+	
+	private Viaje primero;
 	
 	/* Instancia de la Vista*/
 	private MVCView view;
