@@ -1,10 +1,9 @@
 package main;
-import controller.ControladorLista;
 import controller.Controller;
 
 public class MVC {
 	
-	public static void main(String[] args) throws Exception 
+	public static void main(String[] args) 
 	{
 		Controller controler = new Controller();
 		controler.run();

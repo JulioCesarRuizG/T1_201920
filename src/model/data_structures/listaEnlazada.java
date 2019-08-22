@@ -115,9 +115,15 @@ public class listaEnlazada implements IListaEnlazada {
 
 	public void retrocederUnNodo()
 	{
-		if(actual.darSiguiente().darSiguiente() != null)
+		if(actual == primero);
+		else
 		{
-			actual = actual.darSiguiente();
+			Viaje evitar = actual;
+			actual = primero;
+			while(actual.darSiguiente() != evitar)
+			{
+				actual = actual.darSiguiente();
+			}
 		}
 	}
 
@@ -132,6 +138,6 @@ public class listaEnlazada implements IListaEnlazada {
 	}
 	public void verificarInvariante()
 	{
-		
+
 	}
 }

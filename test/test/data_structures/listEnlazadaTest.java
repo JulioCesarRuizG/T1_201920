@@ -112,10 +112,13 @@ public class listEnlazadaTest {
 	{
 		try
 		{
+			lista.avanzarUnNodo();
+			lista.avanzarUnNodo();
+			lista.avanzarUnNodo();
+			lista.retrocederUnNodo();
+			assertEquals(tercero, lista.darActual());
 			lista.retrocederUnNodo();
 			assertEquals(segundo, lista.darActual());
-			lista.retrocederUnNodo();
-			assertEquals(primero, lista.darActual());
 		}
 		catch (Exception e) {
 			fail("El retroceso no ocurrió correctamente");
