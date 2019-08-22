@@ -57,6 +57,7 @@ throw new Exception("Los comandos no están organizados de la forma adecuada");
 			Viaje actual2= ultimo;
 			for(String[] nextLine : reader) {
 				Viaje i = new Viaje(Integer.parseInt(nextLine[0]),Integer.parseInt(nextLine[1]),Integer.parseInt(nextLine[2]),Double.parseDouble(nextLine[3]),Double.parseDouble(nextLine[4]),Double.parseDouble(nextLine[5]),Double.parseDouble(nextLine[6]), null);
+				ultimo =i;
 				if(i.darMes()==01)
 					enero++;
 				else if(i.darMes()==02)
@@ -70,7 +71,9 @@ throw new Exception("Los comandos no están organizados de la forma adecuada");
 				else if(i.darMes()==06)
 					junio++;
 				actual.darSiguiente();
+				
 				actual = actual.darSiguiente();
+				
 			}
 
 		} catch (FileNotFoundException e) {
@@ -80,6 +83,7 @@ throw new Exception("Los comandos no están organizados de la forma adecuada");
 				try {
 					reader.close();
 					reader2.close();
+					
 				} catch (IOException e) {
 					e.printStackTrace();
 				}

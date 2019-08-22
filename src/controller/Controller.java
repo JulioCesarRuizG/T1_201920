@@ -23,7 +23,12 @@ public class Controller {
 	public Controller ()
 	{
 		view = new MVCView();
-		modelo = new MVCModelo();
+		try {
+			modelo = new MVCModelo();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 		
 	public void run() 

@@ -6,7 +6,7 @@ public class MVC {
 	
 	public static void main(String[] args) throws Exception 
 	{
-		ControladorLista controler = new ControladorLista();
+		Controller controler = new Controller();
 		controler.run();
 	}
 }
