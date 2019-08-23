@@ -19,16 +19,13 @@ public class MVCModelo {
 	/**
 	 * Atributos del modelo del mundo
 	 */
-	private IListaEnlazada datos;
-
+	private listaEnlazada datos;
 	private int enero=0;
 	private int febrero=0;
 	private int marzo=0;
 	private int abril=0;
 	private int mayo=0;
 	private int junio=0;
-	private int sMes;
-	private int sID;
 
 	private Viaje viaje1;
 	private boolean valor=true;
@@ -49,9 +46,8 @@ public class MVCModelo {
 			String[] parte1 = reader.readNext();
 			Viaje viaje1 = new Viaje(Integer.parseInt(parte1[0]),Integer.parseInt(parte1[1]),Integer.parseInt(parte1[2]),Double.parseDouble(parte1[3]), Double.parseDouble(parte1[4]),Double.parseDouble(parte1[5]),Double.parseDouble(parte1[6]), null);
 			Viaje actual = viaje1;
-			for(String[] readNext : reader) {
-				Viaje i = new Viaje(Integer.parseInt(readNext[0]),Integer.parseInt(readNext[1]),Integer.parseInt(readNext[2]),Double.parseDouble(readNext[3]),Double.parseDouble(readNext[4]),Double.parseDouble(readNext[5]),Double.parseDouble(readNext[6]), null);
-				System.out.println("inicio");
+			for(String[] nextLine : reader) {
+				Viaje i = new Viaje(Integer.parseInt(nextLine[0]),Integer.parseInt(nextLine[1]),Integer.parseInt(nextLine[2]),Double.parseDouble(nextLine[3]),Double.parseDouble(nextLine[4]),Double.parseDouble(nextLine[5]),Double.parseDouble(nextLine[6]), null);
 				ultimo = i;
 				if(i.darMes()==01)
 					enero++;
@@ -67,16 +63,14 @@ public class MVCModelo {
 					junio++;
 				actual.cambiarSiguiente(i);
 				actual = actual.darSiguiente();
-				System.out.println("final");
 			}
 			reader2 = new CSVReader(new FileReader("C://Users/User/Desktop/Uniandes/Semestre 3/Estructuras de datos/GitHub/Talleres/T1_201920/data/bogota-cadastral-2018-2-All-MonthlyAggregate.csv"));
 			comandos= reader2.readNext();  //La primera línea no se debe leer
 			if(comandos.length!=7||!comandos[0].equals("sourceid")||!comandos[1].equals("dstid")||!comandos[2].equals("month")||!comandos[3].equals("mean_travel_time")||!comandos[4].equals("standard_deviation_travel_time")||!comandos[5].equals("geometric_mean_travel_time")||!comandos[6].equals("geometric_standard_deviation_travel_time"))
 				throw new Exception("Los comandos no están organizados de la forma adecuada");
 			Viaje actual2= ultimo;
-			for(String[] readNext : reader) {
-				Viaje i = new Viaje(Integer.parseInt(readNext[0]),Integer.parseInt(readNext[1]),Integer.parseInt(readNext[2]),Double.parseDouble(readNext[3]),Double.parseDouble(readNext[4]),Double.parseDouble(readNext[5]),Double.parseDouble(readNext[6]), null);
-				System.out.println("segunda");
+			for(String[] nextLine : reader2) {
+				Viaje i = new Viaje(Integer.parseInt(nextLine[0]),Integer.parseInt(nextLine[1]),Integer.parseInt(nextLine[2]),Double.parseDouble(nextLine[3]),Double.parseDouble(nextLine[4]),Double.parseDouble(nextLine[5]),Double.parseDouble(nextLine[6]), null);
 				ultimo =i;
 				if(i.darMes()==01)
 					enero++;
@@ -109,7 +103,7 @@ public class MVCModelo {
 
 		}
 		datos = new listaEnlazada(viaje1);
-
+		
 	}
 
 	/**
@@ -154,25 +148,19 @@ public class MVCModelo {
 	 * Requerimiento eliminar dato
 	 * @param posición del dato a eliminar
 	 */
-	public Viaje eliminar(int posicion)
-	{   Viaje eliminado= (Viaje) datos.eliminar(posicion);
-	   if(eliminado.darMes()==01)
-		   enero--;
-	   else if(eliminado.darMes()==02)
-		   febrero--;
-	   else if(eliminado.darMes()==03)
-		   marzo--;
-	   else if(eliminado.darMes()==04)
-		   abril--;
-	   else if(eliminado.darMes()==05)
-		   mayo--;
-	   else
-		   junio--;
-		return eliminado;
+	public void eliminar(int posicion)
+	{
+		datos.eliminar(posicion);
 	}
-	public void recibirDatosParaFuturosServicios(int mes, int id){
-		sMes=mes;
-		sID=id;
+	
+	public Viaje darUltimo()
+	{
+		Viaje actual = viaje1;
+		while(actual.darSiguiente() != null)
+		{
+			actual = actual.darSiguiente();
+		}
+		return actual;
 	}
 
 
