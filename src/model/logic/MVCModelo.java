@@ -27,6 +27,8 @@ public class MVCModelo {
 	private int abril=0;
 	private int mayo=0;
 	private int junio=0;
+	private int sMes;
+	private int sID;
 
 	private Viaje viaje1;
 	private boolean valor=true;
@@ -107,7 +109,7 @@ public class MVCModelo {
 
 		}
 		datos = new listaEnlazada(viaje1);
-		
+
 	}
 
 	/**
@@ -152,9 +154,25 @@ public class MVCModelo {
 	 * Requerimiento eliminar dato
 	 * @param posición del dato a eliminar
 	 */
-	public void eliminar(int posicion)
-	{
-		datos.eliminar(posicion);
+	public Viaje eliminar(int posicion)
+	{   Viaje eliminado= (Viaje) datos.eliminar(posicion);
+	   if(eliminado.darMes()==01)
+		   enero--;
+	   else if(eliminado.darMes()==02)
+		   febrero--;
+	   else if(eliminado.darMes()==03)
+		   marzo--;
+	   else if(eliminado.darMes()==04)
+		   abril--;
+	   else if(eliminado.darMes()==05)
+		   mayo--;
+	   else
+		   junio--;
+		return eliminado;
+	}
+	public void recibirDatosParaFuturosServicios(int mes, int id){
+		sMes=mes;
+		sID=id;
 	}
 
 

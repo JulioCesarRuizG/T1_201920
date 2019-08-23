@@ -27,7 +27,7 @@ public interface IListaEnlazada<T>{
 	 * @param dato Objeto de busqueda en el arreglo
 	 * @return elemento encontrado en el arreglo (si existe). null si no se encontro el dato.
 	 */
-	T buscar(T dato);
+	T buscar(int posicion);
 	
 	/**
 	 * Eliminar un dato del arreglo.
@@ -35,6 +35,6 @@ public interface IListaEnlazada<T>{
 	 * @param dato Objeto de eliminacion en el arreglo
 	 * @return dato eliminado
 	 */
-	void eliminar( int posicion );
+	T eliminar( int posicion );
 
 }

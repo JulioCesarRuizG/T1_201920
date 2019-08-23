@@ -71,26 +71,10 @@ public class listaEnlazada implements IListaEnlazada {
 		return aqui;
 	}
 
-	public Viaje buscar(Object dato) {
-		Viaje busqueda = (Viaje) dato;
-		Viaje aqui = primero;
-		while(!busqueda.equals(aqui) && aqui != null)
-		{
-			aqui = aqui.darSiguiente();
-		}
-		if(aqui == null)
-		{
-			return null;
-		}
-		else
-			return (Viaje) dato;
-	}
-
-	public void eliminar(int posicion) 
-	{
+	public Viaje buscar(int posicion) {
 		if(posicion == 1)
 		{
-			primero = primero.darSiguiente();
+			return primero;
 		}
 		else
 		{
@@ -100,9 +84,32 @@ public class listaEnlazada implements IListaEnlazada {
 			{
 				aqui = aqui.darSiguiente();
 				posicion --;
-			}
-			aqui.cambiarSiguiente(aqui.darSiguiente().darSiguiente());
+			} return aqui;
+			
+		
+	}
+	}
+
+	public Viaje eliminar(int posicion) 
+	{  Viaje eliminado =null;
+	if(posicion == 1)
+	{
+		primero = primero.darSiguiente();
+	}
+	else
+	{
+		posicion--;
+		Viaje aqui = primero;
+		while(posicion != 1)
+		{
+			aqui = aqui.darSiguiente();
+			posicion --;
 		}
+		eliminado = aqui.darSiguiente();
+		aqui.cambiarSiguiente(aqui.darSiguiente().darSiguiente());
+
+	}
+	return eliminado;
 	}
 
 	public void avanzarUnNodo()
@@ -132,12 +139,11 @@ public class listaEnlazada implements IListaEnlazada {
 		return actual;
 	}
 
-	public void iniciarRecorrido()
-	{
-		falta implementar
-	}
+
 	public void verificarInvariante()
 	{
 
 	}
+
+
 }
