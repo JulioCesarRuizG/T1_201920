@@ -7,6 +7,10 @@ import model.logic.MVCModelo;
 import view.MVCView;
 
 public class Controller {
+	
+	
+	//TODO Esta clase está llena de errores, en caso de que quisieran usar la clase "ControladorLista"
+	//debian ponerla en el main y no llamar esta.
 
 	/* Instancia del Modelo*/
 	private MVCModelo modelo;

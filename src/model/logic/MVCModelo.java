@@ -11,6 +11,11 @@ import com.opencsv.CSVReader;
 import model.data_structures.IListaEnlazada;
 import model.data_structures.Viaje;
 
+
+// TODO en esta clase debían además implementar los métodos:
+//	1. Consultar Viajes para un mes desde una zona origen
+//	2. Consultar estadisticas
+
 /**
  * Definicion del modelo del mundo
  *
@@ -141,6 +146,7 @@ public class MVCModelo {
 	 */
 	public Viaje buscar(Object dato)
 	{
+		//TODO El metodo buscar recibe como parametro un entero, por eso genera error
 		return (Viaje) datos.buscar(dato);
 	}
 

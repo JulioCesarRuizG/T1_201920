@@ -8,6 +8,10 @@ package model.data_structures;
  *
  */
 public class listaEnlazada implements IListaEnlazada {
+	
+	
+	//TODO La lista no es genérica, está elaborada solo para almacenar "Viajes"
+	
 	/**
 	 * Primer elemento de la lista enlazada
 	 */

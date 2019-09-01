@@ -2,6 +2,9 @@ package view;
 
 import model.logic.MVCModelo;
 
+// TODO No modificaron el menú de acuerdo con los requeriemientos del taller 1
+
+
 public class MVCView 
 {
 	    /**
